@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:getwidget/components/tabs/gf_tabbar.dart';
 import 'package:syber_garden/data/small_courses.dart';
 import 'package:syber_garden/screens/home_screen.dart';
@@ -43,19 +44,30 @@ class _NavigatorWidgetState extends State<NavigatorWidget>
         tabBarColor: Color(0xff3d416d),
         tabs: [
           Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: Tab(
-              icon: Icon(Icons.book),
-              child: const Text(
-                'Learn',
-                style: TextStyle(
-                  fontSize: 14,
+              padding: const EdgeInsets.all(0.0),
+              child: Tab(
+                icon: Image(
+                  width: 20,
+                  height: 20,
+                  image: Svg(
+                    'assets/icons/road.svg',
+                  ),
                 ),
+                child: const Text(
+                  'Learn',
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+              )),
+          Tab(
+            icon: Image(
+              width: 20,
+              height: 20,
+              image: Svg(
+                'assets/icons/community.svg',
               ),
             ),
-          ),
-          Tab(
-            icon: Icon(Icons.message),
             child: const Text(
               'Community',
               style: TextStyle(
@@ -64,7 +76,13 @@ class _NavigatorWidgetState extends State<NavigatorWidget>
             ),
           ),
           Tab(
-            icon: Icon(Icons.man),
+            icon: Image(
+              width: 20,
+              height: 20,
+              image: Svg(
+                'assets/icons/user.svg',
+              ),
+            ),
             child: const Text(
               'Profile',
               style: TextStyle(

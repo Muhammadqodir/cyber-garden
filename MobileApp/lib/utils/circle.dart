@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:getwidget/components/button/gf_button.dart';
@@ -57,45 +58,6 @@ class _CircleState extends State<Circle> {
               ),
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GFButton(
-                color: Color(0xff4b4f7f),
-                onPressed: () {},
-                text: "дальше",
-                size: GFSize.SMALL,
-                textStyle: TextStyle(color: Colors.white, fontSize: 12),
-                icon: Icon(
-                  Icons.leak_add_rounded,
-                  size: 12,
-                ),
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              GFButton(
-                color: Color(0xff4b4f7f),
-                onPressed: () {},
-                text: "изучать",
-                size: GFSize.SMALL,
-                textStyle: TextStyle(color: Colors.white, fontSize: 12),
-                icon: Icon(
-                  Icons.done,
-                  color: Colors.white,
-                  size: 12,
-                ),
-              ),
-            ],
-          ),
-          Icon(
-            Icons.more_vert,
-            size: 50,
-            color: const Color(0xff4b4f7f),
-          ),
           Padding(
             padding: EdgeInsets.only(top: 10),
             child: Text(
@@ -105,6 +67,77 @@ class _CircleState extends State<Circle> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          widget.activity == 'true'
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 30,
+                      child: CupertinoButton(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        color: Color.fromARGB(144, 255, 214, 49),
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.done,
+                              color: Colors.white,
+                              size: 12,
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            const Text(
+                              'дальше',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    SizedBox(
+                      height: 30,
+                      child: CupertinoButton(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        color: Color(0xff388461),
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.done,
+                              color: Colors.white,
+                              size: 12,
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            const Text(
+                              'дальше',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              : SizedBox(),
+          SizedBox(
+            height: 10,
+          ),
+          Icon(
+            Icons.more_vert,
+            size: 50,
+            color: const Color(0xff4b4f7f),
           ),
           const SizedBox(
             height: 25,

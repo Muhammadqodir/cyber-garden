@@ -15,11 +15,9 @@ class RoadMap extends StatefulWidget {
 
 class _RoadMapState extends State<RoadMap> {
   List<CircleCourse> books = allCircleCourse;
-
   @override
   Widget build(BuildContext context) {
     final e = books[0];
-
     return Scaffold(
       backgroundColor: const Color(0xff36395f),
       body: Stack(
