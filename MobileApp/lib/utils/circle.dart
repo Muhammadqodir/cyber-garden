@@ -108,7 +108,13 @@ class _CircleState extends State<Circle> {
                       child: CupertinoButton(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         color: Color(0xff388461),
-                        onPressed: () {},
+                        onPressed: () {
+                          Route route = CupertinoPageRoute(
+                              builder: (context) => CourseDetails(
+                                  book:
+                                      '${Circle(title: widget.title).title}'));
+                          Navigator.push(context, route);
+                        },
                         child: Row(
                           children: [
                             Icon(
@@ -120,7 +126,7 @@ class _CircleState extends State<Circle> {
                               width: 8,
                             ),
                             const Text(
-                              'дальше',
+                              'изучать',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 12),
                             ),

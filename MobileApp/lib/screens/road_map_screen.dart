@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:getwidget/colors/gf_color.dart';
 import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
 import '../data/circle_courses.dart';
@@ -60,67 +61,93 @@ class _RoadMapState extends State<RoadMap> {
             ),
           ),
           Positioned(
-              top: 15,
-              child: Container(
-                color: Color(0xff36395f),
-                margin: const EdgeInsets.only(top: 10, right: 10),
-                width: MediaQuery.of(context).size.width,
-                height: 70,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Padding(
+            top: 15,
+            child: Container(
+              color: Color(0xff36395f),
+              margin: const EdgeInsets.only(top: 10, right: 10),
+              width: MediaQuery.of(context).size.width,
+              height: 70,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Text(
-                        'Бухгалтерия',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Expanded(child: Container()),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 15),
-                          child: SizedBox(
-                            width: 200,
-                            child: GFProgressBar(
-                              percentage: e.progress,
-                              lineHeight: 10,
-                              alignment: MainAxisAlignment.spaceBetween,
-                              leading: Icon(Icons.sentiment_dissatisfied,
-                                  color: GFColors.DANGER),
-                              trailing: Icon(Icons.sentiment_satisfied,
-                                  color: GFColors.SUCCESS),
-                              backgroundColor: Colors.black26,
-                              progressBarColor: GFColors.SUCCESS,
+                      child: Row(
+                        children: [
+                          Image(
+                            width: 20,
+                            height: 20,
+                            image: Svg(
+                              'assets/icons/icons8-edit.svg',
                             ),
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              width: 200,
-                              child: Center(
-                                  child: Text(
-                                '${e.progress * 100.floor()}%',
-                                style: TextStyle(color: Colors.white),
-                              )),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            'Бухгалтерия',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      )),
+                  Expanded(child: Container()),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: SizedBox(
+                          width: 175,
+                          child: GFProgressBar(
+                            percentage: e.progress,
+                            lineHeight: 10,
+                            alignment: MainAxisAlignment.spaceBetween,
+                            leading: Image(
+                              width: 20,
+                              height: 20,
+                              color: Colors.grey,
+                              image: Svg(
+                                'assets/icons/crown.svg',
+                              ),
                             ),
-                          ],
+                            trailing: Image(
+                              width: 20,
+                              height: 20,
+                              color: Color(0xffffd531),
+                              image: Svg(
+                                'assets/icons/crown.svg',
+                              ),
+                            ),
+                            backgroundColor: Colors.black26,
+                            progressBarColor: GFColors.SUCCESS,
+                          ),
                         ),
-                      ],
-                    )
-                  ],
-                ),
-              ))
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            width: 200,
+                            child: Center(
+                                child: Text(
+                              '${e.progress * 100.floor()}%',
+                              style: TextStyle(color: Colors.white),
+                            )),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
