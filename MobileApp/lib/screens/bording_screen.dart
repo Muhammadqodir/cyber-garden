@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:syber_garden/data/small_courses.dart';
+import 'package:syber_garden/widgets/navigation_screens.dart';
 
 class BordingScreen extends StatefulWidget {
   const BordingScreen({super.key});
@@ -87,7 +88,11 @@ class _BordingScreenState extends State<BordingScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: CupertinoButton(
                 color: Color(0xff388461),
-                onPressed: () {},
+                onPressed: () {
+                  Route route = CupertinoPageRoute(
+                      builder: (context) => NavigatorWidget());
+                  Navigator.push(context, route);
+                },
                 child: const Text('Enabled'),
               ),
             ),

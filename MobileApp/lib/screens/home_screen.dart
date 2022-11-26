@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           cardCours.title,
                                           style: const TextStyle(
-                                              fontSize: 17,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white),
                                         ),
@@ -245,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           cardCours.description,
                                           style: const TextStyle(
-                                              fontSize: 16, color: Colors.grey),
+                                              fontSize: 15, color: Colors.grey),
                                         ),
                                       ],
                                     ),
