@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -68,6 +67,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Color(0xff3d416d),
+        automaticallyImplyLeading: false,
+        title: Text('Профиль'),
+        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Icon(Icons.settings),
+          ),
+        ],
+      ),
       backgroundColor: const Color(0xff212338),
       body: ListView(
         padding: EdgeInsets.zero,
@@ -81,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 SizedBox(
                   width: w,
-                  height: h * 0.35,
+                  height: h * 0.25,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,20 +110,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: 90,
                               height: 90,
                               decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
+                                color: Color.fromARGB(166, 238, 238, 238),
                                 borderRadius: BorderRadius.circular(50),
                               ),
                               child: Center(
                                 child: _image == null
-                                    ? Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                            image: const DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/img/avatar.jpg'),
-                                                fit: BoxFit.cover)),
-                                      )
+                                    ? Image(
+                                        width: 50,
+                                        height: 50,
+                                        image: NetworkImage(
+                                            'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'),
+                                        fit: BoxFit.cover)
                                     : CircleAvatar(
                                         backgroundImage: FileImage(_image!),
                                         radius: 200.0,
@@ -119,59 +128,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                'Joined',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              Text(
-                                '2 month ago',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          )
                         ],
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'DADAXON',
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                'DADAXON',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Turgunboev',
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                              SizedBox(
+                                height: 10,
                               ),
-                            ),
-                          ],
-                        ),
+                              Text(
+                                'Turgunboev',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ],
                   ),
