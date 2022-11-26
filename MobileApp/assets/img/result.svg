@@ -1,0 +1,21 @@
+<?xml version="1.0" ?><svg width="64px" height="64px" viewBox="0 0 64 64" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><defs><style>
+      .cls-1 {
+        fill: #f5dd90;
+      }
+
+      .cls-2 {
+        fill: #f76c5e;
+      }
+
+      .cls-3 {
+        fill: #a3cef1;
+      }
+
+      .cls-4 {
+        fill: #6096ba;
+      }
+
+      .cls-5 {
+        fill: #274c77;
+      }
+    </style></defs><polyline class="cls-5" points="22 36 18 37 18 55 22 55 32 55 42 55 46 55 46 37 42 36"/><path class="cls-5" d="M50,32l2-6,2,6v22c0,1.1-.9,2-2,2h0c-1.1,0-2-.9-2-2v-22Z"/><path class="cls-2" d="M50,52h4v2c0,1.1-.9,2-2,2-.55,0-1.05-.22-1.41-.59-.37-.36-.59-.86-.59-1.41v-2Z"/><polygon class="cls-2" points="50 32 54 32 52 26 50 32"/><path class="cls-5" d="M10,32l2-6,2,6v22c0,1.1-.9,2-2,2h0c-1.1,0-2-.9-2-2v-22Z"/><path class="cls-2" d="M10,52h4v2c0,1.1-.9,2-2,2-.55,0-1.05-.22-1.41-.59-.37-.36-.59-.86-.59-1.41v-2Z"/><polygon class="cls-2" points="10 32 14 32 12 26 10 32"/><path class="cls-3" d="M38,32.25c.53,.14,1.05,.39,1.5,.75l2.5,2v20l-2.5-2c-.73-.58-1.62-.88-2.5-.88s-1.77,.3-2.5,.88-1.62,.88-2.5,.88-1.77-.3-2.5-.88c-1.46-1.17-3.54-1.17-5,0l-2.5,2v-20l2.5-2c.45-.36,.97-.61,1.5-.75"/><rect class="cls-4" height="2" width="2" x="51" y="22"/><rect class="cls-4" height="2" width="2" x="51" y="18"/><rect class="cls-4" height="2" width="2" x="51" y="14"/><rect class="cls-4" height="2" width="2" x="11" y="22"/><rect class="cls-4" height="2" width="2" x="11" y="18"/><rect class="cls-4" height="2" width="2" x="11" y="14"/><circle class="cls-5" cx="32" cy="25" r="3"/><path class="cls-4" d="M30,28h4c2.21,0,4,1.79,4,4v4h-12v-4c0-2.21,1.79-4,4-4Z"/><polyline class="cls-5" points="37 36 35 48 29 48 27 36"/><polygon class="cls-1" points="32 8 32.94 11.06 36 11.06 33.53 12.94 34.47 16 32 14.11 29.53 16 30.47 12.94 28 11.06 31.06 11.06 32 8"/><polygon class="cls-1" points="21 13 21.94 16.06 25 16.06 22.53 17.94 23.47 21 21 19.11 18.53 21 19.47 17.94 17 16.06 20.06 16.06 21 13"/><polygon class="cls-1" points="43 13 43.94 16.06 47 16.06 44.53 17.94 45.47 21 43 19.11 40.53 21 41.47 17.94 39 16.06 42.06 16.06 43 13"/></svg>
