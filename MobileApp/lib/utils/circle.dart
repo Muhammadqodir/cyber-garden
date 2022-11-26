@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:getwidget/components/button/gf_button.dart';
 import 'package:syber_garden/screens/course_details_screen.dart';
 
 import '../data/card_courses.dart';
@@ -42,7 +43,7 @@ class _CircleState extends State<Circle> {
               child: Image(
                 color: widget.activity == 'false'
                     ? Color(0xff43444e)
-                    : Color.fromARGB(255, 188, 189, 197),
+                    : Color.fromARGB(255, 161, 163, 179),
                 image: widget.activity == 'false'
                     ? Svg(
                         'assets/icons/lock.svg',
@@ -61,59 +62,25 @@ class _CircleState extends State<Circle> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(
-                onTap: () {
-                  Route route = MaterialPageRoute(
-                      builder: (context) => CourseDetails(
-                            book: widget.title,
-                          ));
-                  Navigator.push(context, route);
-                },
-                child: Container(
-                  width: 80,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    color: Colors.indigo,
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Изучить',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+              GFButton(
+                color: Color(0xff4b4f7f),
+                onPressed: () {},
+                text: "пропустить",
+                textStyle: TextStyle(color: Colors.white),
+                icon: Icon(Icons.leak_add_rounded),
               ),
               SizedBox(
                 width: 15,
               ),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  width: 80,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'След',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+              GFButton(
+                color: Color(0xff4b4f7f),
+                onPressed: () {},
+                text: "изучать",
+                icon: Icon(
+                  Icons.done,
+                  color: Colors.white,
                 ),
-              )
+              ),
             ],
           ),
           Icon(
