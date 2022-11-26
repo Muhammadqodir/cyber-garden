@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/button/gf_button.dart';
-import 'package:getwidget/components/search_bar/gf_search_bar.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:syber_garden/data/small_courses.dart';
-import 'package:syber_garden/screens/road_map_screen.dart';
-import 'package:syber_garden/widgets/navigation_screens.dart';
 
 class BordingScreen extends StatefulWidget {
   const BordingScreen({super.key});
@@ -32,7 +28,7 @@ class _BordingScreenState extends State<BordingScreen> {
               height: 150,
               color: Colors.amber,
             ),
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
             const Text(
@@ -43,7 +39,7 @@ class _BordingScreenState extends State<BordingScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -84,18 +80,15 @@ class _BordingScreenState extends State<BordingScreen> {
                 obscureText: false,
               ),
             ),
-            SizedBox(
-              height: 50,
+            const SizedBox(
+              height: 30,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: GFButton(
+              child: CupertinoButton(
                 color: Color(0xff388461),
                 onPressed: () {},
-                size: GFSize.LARGE,
-                text: "primary",
-                shape: GFButtonShape.pills,
-                fullWidthButton: true,
+                child: const Text('Enabled'),
               ),
             ),
           ],
