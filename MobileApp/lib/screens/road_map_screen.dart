@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/colors/gf_color.dart';
 import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
-
 import '../data/circle_courses.dart';
 import '../utils/circle.dart';
 
@@ -22,21 +21,58 @@ class _RoadMapState extends State<RoadMap> {
     final e = books[0];
 
     return Scaffold(
-      backgroundColor: const Color(0xff212338),
-      body: ListView(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      backgroundColor: const Color(0xff36395f),
+      body: Stack(
         children: [
-          Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(
-                    top: 10, left: 10, right: 10, bottom: 20),
-                width: MediaQuery.of(context).size.width,
-                height: 50,
-                child: Row(
+          Padding(
+            padding: const EdgeInsets.only(top: 70),
+            child: ListView(
+              physics: BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
+              children: [
+                Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage("assets/img/banner.png"),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: const Color(0xff212338),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: books
+                                .map(
+                                  (e) => Circle(
+                                    title: e.title,
+                                    activity: e.activity,
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+              top: 15,
+              child: Container(
+                color: Color(0xff36395f),
+                margin: const EdgeInsets.only(top: 10, right: 10),
+                width: MediaQuery.of(context).size.width,
+                height: 70,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
                         'Бухгалтерия',
                         style: TextStyle(
@@ -47,22 +83,26 @@ class _RoadMapState extends State<RoadMap> {
                     ),
                     Expanded(child: Container()),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
                           height: 10,
                         ),
-                        SizedBox(
-                          width: 200,
-                          child: GFProgressBar(
-                            percentage: e.progress,
-                            lineHeight: 10,
-                            alignment: MainAxisAlignment.spaceBetween,
-                            leading: Icon(Icons.sentiment_dissatisfied,
-                                color: GFColors.DANGER),
-                            trailing: Icon(Icons.sentiment_satisfied,
-                                color: GFColors.SUCCESS),
-                            backgroundColor: Colors.black26,
-                            progressBarColor: GFColors.SUCCESS,
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15),
+                          child: SizedBox(
+                            width: 200,
+                            child: GFProgressBar(
+                              percentage: e.progress,
+                              lineHeight: 10,
+                              alignment: MainAxisAlignment.spaceBetween,
+                              leading: Icon(Icons.sentiment_dissatisfied,
+                                  color: GFColors.DANGER),
+                              trailing: Icon(Icons.sentiment_satisfied,
+                                  color: GFColors.SUCCESS),
+                              backgroundColor: Colors.black26,
+                              progressBarColor: GFColors.SUCCESS,
+                            ),
                           ),
                         ),
                         Row(
@@ -82,45 +122,7 @@ class _RoadMapState extends State<RoadMap> {
                     )
                   ],
                 ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 220,
-                    height: 220,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/img/LoginImg.png'),
-                            fit: BoxFit.cover)),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: const Color(0xff212338),
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(35),
-                            topLeft: Radius.circular(35))),
-                    child: Column(
-                      children: books
-                          .map(
-                            (e) => Circle(
-                              title: e.title,
-                              activity: e.activity,
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                ],
-              ),
-            ],
-          ),
+              ))
         ],
       ),
     );

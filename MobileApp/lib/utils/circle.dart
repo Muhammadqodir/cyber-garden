@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:syber_garden/screens/course_details_screen.dart';
 
 import '../data/card_courses.dart';
@@ -27,7 +28,7 @@ class _CircleState extends State<Circle> {
             height: 130.0,
             decoration: BoxDecoration(
               color: widget.activity == 'false'
-                  ? Color.fromARGB(128, 0, 0, 0)
+                  ? const Color(0xff141522)
                   : const Color(0xff3d416d),
               shape: BoxShape.circle,
               border: Border.all(
@@ -39,10 +40,19 @@ class _CircleState extends State<Circle> {
             child: Container(
               padding: const EdgeInsets.all(30),
               child: Image(
-                  image: NetworkImage(widget.activity == 'false'
-                      ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lock-icon.svg/1200px-Lock-icon.svg.png'
-                      : 'https://cdn-icons-png.flaticon.com/512/178/178365.png'),
-                  fit: BoxFit.cover),
+                color: widget.activity == 'false'
+                    ? Color(0xff43444e)
+                    : Color.fromARGB(255, 188, 189, 197),
+                image: widget.activity == 'false'
+                    ? Svg(
+                        'assets/icons/lock.svg',
+                      )
+                    : Svg(
+                        'assets/icons/star.svg',
+                      ),
+                width: 30,
+                height: 30,
+              ),
             ),
           ),
           SizedBox(
