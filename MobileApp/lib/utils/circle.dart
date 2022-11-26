@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:getwidget/components/button/gf_button.dart';
+import 'package:getwidget/size/gf_size.dart';
 import 'package:syber_garden/screens/course_details_screen.dart';
 
 import '../data/card_courses.dart';
@@ -65,9 +66,13 @@ class _CircleState extends State<Circle> {
               GFButton(
                 color: Color(0xff4b4f7f),
                 onPressed: () {},
-                text: "пропустить",
-                textStyle: TextStyle(color: Colors.white),
-                icon: Icon(Icons.leak_add_rounded),
+                text: "дальше",
+                size: GFSize.SMALL,
+                textStyle: TextStyle(color: Colors.white, fontSize: 12),
+                icon: Icon(
+                  Icons.leak_add_rounded,
+                  size: 12,
+                ),
               ),
               SizedBox(
                 width: 15,
@@ -76,9 +81,12 @@ class _CircleState extends State<Circle> {
                 color: Color(0xff4b4f7f),
                 onPressed: () {},
                 text: "изучать",
+                size: GFSize.SMALL,
+                textStyle: TextStyle(color: Colors.white, fontSize: 12),
                 icon: Icon(
                   Icons.done,
                   color: Colors.white,
+                  size: 12,
                 ),
               ),
             ],

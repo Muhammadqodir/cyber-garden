@@ -31,3 +31,9 @@ const allBooks = [
     urlImage: 'assets/img/flutter.jpg',
   ),
 ];
+
+final onBordingCourse = [
+  'Flutter',
+  'C++',
+  'Python',
+];

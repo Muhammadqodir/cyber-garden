@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/search_bar/gf_search_bar.dart';
 import 'package:syber_garden/data/small_courses.dart';
 import 'package:syber_garden/screens/road_map_screen.dart';
 import 'package:syber_garden/widgets/navigation_screens.dart';
@@ -12,8 +13,8 @@ class BordingScreen extends StatefulWidget {
 }
 
 class _BordingScreenState extends State<BordingScreen> {
+  List list = onBordingCourse.toList();
   final controller = TextEditingController();
-  List<Book> books = allBooks;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,36 +38,46 @@ class _BordingScreenState extends State<BordingScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 25, right: 25, top: 30, bottom: 20),
-              child: SizedBox(
-                height: 45,
-                child: TextField(
-                  controller: controller,
-                  decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.all(10.0),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 1,
-                            color: Color.fromARGB(
-                                71, 255, 255, 255)), //<-- SEE HERE
-                      ),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.grey,
-                      ),
-                      hintText: 'Поиск курсов',
-                      hintStyle: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.grey,
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          borderSide: BorderSide(color: Colors.white))),
-                  onChanged: searchBook,
+            SizedBox(
+              height: 20,
+            ),
+            TextField(
+              style: TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Color(0xff373960),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderSide: BorderSide(width: 2, color: Colors.green),
                 ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderSide: BorderSide(width: 2, color: Color(0xff388461)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderSide: BorderSide(width: 2, color: Color(0xff388461)),
+                ),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(
+                      width: 1,
+                    )),
+                errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(width: 2, color: Colors.white)),
+                focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide:
+                        BorderSide(width: 2, color: Colors.yellowAccent)),
+                hintText: "Поиск профессии",
+                hintStyle: TextStyle(fontSize: 16, color: Color(0xff737698)),
               ),
+              controller: controller,
+              obscureText: false,
+            ),
+            SizedBox(
+              height: 20,
             ),
             InkWell(
               onTap: () {
@@ -98,14 +109,5 @@ class _BordingScreenState extends State<BordingScreen> {
         ),
       ),
     );
-  }
-
-  void searchBook(String query) {
-    final suggestions = allBooks.where((book) {
-      final bookTitle = book.title.toLowerCase();
-      final input = query.toLowerCase();
-      return bookTitle.contains(input);
-    }).toList();
-    setState(() => books = suggestions);
   }
 }
