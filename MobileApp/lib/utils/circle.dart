@@ -5,6 +5,7 @@ import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/size/gf_size.dart';
 import 'package:syber_garden/level_up_icons_icons.dart';
 import 'package:syber_garden/screens/course_details_screen.dart';
+import 'package:syber_garden/utils/generate_icon.dart';
 
 import '../data/card_courses.dart';
 import '../data/circle_courses.dart';
@@ -12,8 +13,15 @@ import '../screens/road_map_screen.dart';
 
 class Circle extends StatefulWidget {
   final String title;
+  final String imgUrl;
+  final int salary;
   String? activity;
-  Circle({super.key, required this.title, this.activity});
+  Circle(
+      {super.key,
+      required this.title,
+      this.activity,
+      required this.imgUrl,
+      required this.salary});
 
   @override
   State<Circle> createState() => _CircleState();
@@ -21,6 +29,19 @@ class Circle extends StatefulWidget {
 
 class _CircleState extends State<Circle> {
   String? activity;
+  String imgUrl = "notloaded";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    GenerateIcon().getIcon(widget.title).then((value) => {
+          setState(() {
+            imgUrl = value;
+          })
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -43,26 +64,23 @@ class _CircleState extends State<Circle> {
             ),
             child: Container(
               padding: const EdgeInsets.all(30),
-              child: Image(
-                color: widget.activity == 'false'
-                    ? Color(0xff43444e)
-                    : Color.fromARGB(255, 82, 88, 150),
-                image: widget.activity == 'false'
-                    ? Svg(
-                        'assets/icons/lock.svg',
-                      )
-                    : Svg(
-                        'assets/icons/star.svg',
-                      ),
-                width: 40,
-                height: 40,
-              ),
+              child: imgUrl == "notloaded"
+                  ? const CupertinoActivityIndicator(
+                      radius: 12,
+                      color: Colors.white,
+                    )
+                  : Image.network(
+                      imgUrl,
+                      color: Color.fromARGB(255, 82, 88, 150),
+                      width: 40,
+                      height: 40,
+                    ),
             ),
           ),
           Padding(
             padding: EdgeInsets.only(top: 20),
             child: Text(
-              '${Circle(title: widget.title).title}',
+              widget.title,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -74,79 +92,80 @@ class _CircleState extends State<Circle> {
           const SizedBox(
             height: 15,
           ),
-          widget.activity == 'true'
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 30,
-                      child: CupertinoButton(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        color: Color.fromARGB(144, 255, 214, 49),
-                        onPressed: () {},
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(
-                              LevelUpIcons.icons8_graduation_cap,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              'дальше',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontFamily: "Monserrat"),
-                            ),
-                          ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 30,
+                child: CupertinoButton(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  color: Color(0xFFFFC008),
+                  onPressed: () {},
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        LevelUpIcons.icons8_graduation_cap,
+                        color: Colors.black54,
+                        size: 20,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        'Изучить',
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Monserrat",
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    SizedBox(
-                      height: 30,
-                      child: CupertinoButton(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        color: const Color(0xff388461),
-                        onPressed: () {
-                          Route route = CupertinoPageRoute(
-                              builder: (context) => CourseDetails(
-                                  book:
-                                      '${Circle(title: widget.title).title}'));
-                          Navigator.push(context, route);
-                        },
-                        child: Row(
-                          children: const [
-                            Icon(
-                              LevelUpIcons.icons8_done,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              'изучать',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontFamily: 'Monserrat',
-                              ),
-                            ),
-                          ],
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 15,
+              ),
+              SizedBox(
+                height: 30,
+                child: CupertinoButton(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  color: const Color(0xff28A745),
+                  onPressed: () {
+                    // Route route = CupertinoPageRoute(
+                    //     builder: (context) => CourseDetails(
+                    //         book:
+                    //             '${Circle(title: widget.title).title}'));
+                    // Navigator.push(context, route);
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(
+                        LevelUpIcons.icons8_done,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        'Знаяю',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontFamily: 'Monserrat',
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
-                )
-              : const SizedBox(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
           const SizedBox(
             height: 20,
           ),

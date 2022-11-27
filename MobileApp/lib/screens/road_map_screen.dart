@@ -8,8 +8,12 @@ import '../data/circle_courses.dart';
 import '../utils/circle.dart';
 
 class RoadMap extends StatefulWidget {
+  final List<Circle> roadMap;
+  final String position;
   const RoadMap({
     super.key,
+    required this.roadMap,
+    required this.position
   });
 
   @override
@@ -46,14 +50,7 @@ class _RoadMapState extends State<RoadMap> {
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: books
-                                  .map(
-                                    (e) => Circle(
-                                      title: e.title,
-                                      activity: e.activity,
-                                    ),
-                                  )
-                                  .toList(),
+                              children: widget.roadMap
                             ),
                           ),
                         ],
@@ -82,23 +79,23 @@ class _RoadMapState extends State<RoadMap> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Row(
-                          children: const [
+                          children: [
+                            Text(
+                              widget.position,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
                             Image(
                               width: 20,
                               height: 20,
                               image: Svg(
                                 'assets/icons/icons8-edit.svg',
                               ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              'Бухгалтерия',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),

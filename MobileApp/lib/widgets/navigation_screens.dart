@@ -5,11 +5,14 @@ import 'package:syber_garden/data/small_courses.dart';
 import 'package:syber_garden/level_up_icons_icons.dart';
 import 'package:syber_garden/screens/community_screen.dart';
 import 'package:syber_garden/screens/profile_screen.dart';
+import 'package:syber_garden/utils/circle.dart';
 import '../screens/road_map_screen.dart';
 import 'package:getwidget/getwidget.dart';
 
 class NavigatorWidget extends StatefulWidget {
-  const NavigatorWidget({super.key});
+  final List<Circle> items;
+  final String position;
+  const NavigatorWidget({super.key, required this.items, required this.position});
 
   @override
   State<NavigatorWidget> createState() => _NavigatorWidgetState();
@@ -77,8 +80,8 @@ class _NavigatorWidgetState extends State<NavigatorWidget>
           ],
         ),
       ),
-      body: GFTabBarView(controller: tabController, children: const <Widget>[
-        RoadMap(),
+      body: GFTabBarView(controller: tabController, children: <Widget>[
+        RoadMap(roadMap: widget.items, position: widget.position,),
         CommunityScreen(),
         ProfileScreen(),
       ]),

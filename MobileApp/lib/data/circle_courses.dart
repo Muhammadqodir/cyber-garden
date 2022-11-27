@@ -14,7 +14,7 @@ class CircleCourse {
 const allCircleCourse = [
   CircleCourse(
     title: 'Python',
-    urlImage: 'https://cdn-icons-png.flaticon.com/512/74/74595.png',
+    urlImage: 'https://cdn-icons-png.flaticon.com/128/1822/1822920.png',
     activity: 'true',
     progress: 0.8,
   ),
