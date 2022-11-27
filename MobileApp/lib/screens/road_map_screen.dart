@@ -10,11 +10,7 @@ import '../utils/circle.dart';
 class RoadMap extends StatefulWidget {
   final List<Circle> roadMap;
   final String position;
-  const RoadMap({
-    super.key,
-    required this.roadMap,
-    required this.position
-  });
+  const RoadMap({super.key, required this.roadMap, required this.position});
 
   @override
   State<RoadMap> createState() => _RoadMapState();
@@ -49,9 +45,8 @@ class _RoadMapState extends State<RoadMap> {
                               color: Color(0xff212338),
                             ),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: widget.roadMap
-                            ),
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: widget.roadMap),
                           ),
                         ],
                       ),
@@ -64,7 +59,7 @@ class _RoadMapState extends State<RoadMap> {
               top: 0,
               child: Container(
                 color: const Color(0xff36395f),
-                margin: const EdgeInsets.only( right: 10),
+                margin: const EdgeInsets.only(right: 10),
                 width: MediaQuery.of(context).size.width,
                 height: 70,
                 child: Row(
@@ -74,18 +69,23 @@ class _RoadMapState extends State<RoadMap> {
                       onTap: () {
                         Route route = CupertinoPageRoute(
                             builder: (context) => const BordingScreen());
-                        Navigator.push(context, route);
+                        Navigator.pushReplacement(context, route);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Row(
                           children: [
-                            Text(
-                              widget.position,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
+                            Container(
+                              width: 120,
+                              child: Text(
+                                widget.position,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                             SizedBox(
                               width: 5,

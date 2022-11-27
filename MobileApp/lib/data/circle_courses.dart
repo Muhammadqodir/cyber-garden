@@ -16,7 +16,7 @@ const allCircleCourse = [
     title: 'Python',
     urlImage: 'https://cdn-icons-png.flaticon.com/128/1822/1822920.png',
     activity: 'true',
-    progress: 0.8,
+    progress: 0.01,
   ),
   CircleCourse(
     title: 'Java script',
