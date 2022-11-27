@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/size/gf_size.dart';
+import 'package:syber_garden/level_up_icons_icons.dart';
 import 'package:syber_garden/screens/course_details_screen.dart';
 
 import '../data/card_courses.dart';
@@ -45,7 +46,7 @@ class _CircleState extends State<Circle> {
               child: Image(
                 color: widget.activity == 'false'
                     ? Color(0xff43444e)
-                    : Color.fromARGB(255, 161, 163, 179),
+                    : Color.fromARGB(255, 82, 88, 150),
                 image: widget.activity == 'false'
                     ? Svg(
                         'assets/icons/lock.svg',
@@ -53,22 +54,24 @@ class _CircleState extends State<Circle> {
                     : Svg(
                         'assets/icons/star.svg',
                       ),
-                width: 30,
-                height: 30,
+                width: 40,
+                height: 40,
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10),
+            padding: EdgeInsets.only(top: 20),
             child: Text(
               '${Circle(title: widget.title).title}',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Ubuntu',
+              ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           widget.activity == 'true'
@@ -82,32 +85,36 @@ class _CircleState extends State<Circle> {
                         color: Color.fromARGB(144, 255, 214, 49),
                         onPressed: () {},
                         child: Row(
-                          children: [
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
                             Icon(
-                              Icons.done,
+                              LevelUpIcons.icons8_graduation_cap,
                               color: Colors.white,
-                              size: 12,
+                              size: 20,
                             ),
                             SizedBox(
                               width: 8,
                             ),
-                            const Text(
+                            Text(
                               'дальше',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontFamily: "Monserrat"),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     SizedBox(
                       height: 30,
                       child: CupertinoButton(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        color: Color(0xff388461),
+                        color: const Color(0xff388461),
                         onPressed: () {
                           Route route = CupertinoPageRoute(
                               builder: (context) => CourseDetails(
@@ -116,19 +123,22 @@ class _CircleState extends State<Circle> {
                           Navigator.push(context, route);
                         },
                         child: Row(
-                          children: [
+                          children: const [
                             Icon(
-                              Icons.done,
+                              LevelUpIcons.icons8_done,
                               color: Colors.white,
-                              size: 12,
+                              size: 20,
                             ),
                             SizedBox(
                               width: 8,
                             ),
-                            const Text(
+                            Text(
                               'изучать',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontFamily: 'Monserrat',
+                              ),
                             ),
                           ],
                         ),
@@ -136,14 +146,39 @@ class _CircleState extends State<Circle> {
                     ),
                   ],
                 )
-              : SizedBox(),
-          SizedBox(
+              : const SizedBox(),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color(0xff4b4f7f),
+            ),
+          ),
+          const SizedBox(
             height: 10,
           ),
-          Icon(
-            Icons.more_vert,
-            size: 50,
-            color: const Color(0xff4b4f7f),
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color(0xff4b4f7f),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color(0xff4b4f7f),
+            ),
           ),
           const SizedBox(
             height: 25,

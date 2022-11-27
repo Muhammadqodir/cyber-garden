@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:getwidget/components/tabs/gf_tabbar.dart';
 import 'package:syber_garden/data/small_courses.dart';
-import 'package:syber_garden/screens/home_screen.dart';
+import 'package:syber_garden/level_up_icons_icons.dart';
+import 'package:syber_garden/screens/community_screen.dart';
 import 'package:syber_garden/screens/profile_screen.dart';
 import '../screens/road_map_screen.dart';
 import 'package:getwidget/getwidget.dart';
@@ -36,24 +37,18 @@ class _NavigatorWidgetState extends State<NavigatorWidget>
       backgroundColor: const Color(0xff212338),
       bottomNavigationBar: GFTabBar(
         indicatorColor: Colors.transparent,
-        labelColor: Color(0xff3ebd64),
-        unselectedLabelColor: Colors.grey,
+        labelColor: const Color(0xff3ebd64),
+        unselectedLabelColor: Colors.white,
         tabBarHeight: 65,
         length: 3,
         controller: tabController,
         tabBarColor: Color(0xff3d416d),
-        tabs: [
+        tabs: const [
           Padding(
-              padding: const EdgeInsets.all(0.0),
+              padding: EdgeInsets.all(0.0),
               child: Tab(
-                icon: Image(
-                  width: 20,
-                  height: 20,
-                  image: Svg(
-                    'assets/icons/road.svg',
-                  ),
-                ),
-                child: const Text(
+                icon: Icon(LevelUpIcons.road),
+                child: Text(
                   'Learn',
                   style: TextStyle(
                     fontSize: 14,
@@ -61,30 +56,18 @@ class _NavigatorWidgetState extends State<NavigatorWidget>
                 ),
               )),
           Tab(
-            icon: Image(
-              width: 20,
-              height: 20,
-              image: Svg(
-                'assets/icons/community.svg',
-              ),
-            ),
-            child: const Text(
-              'Community',
+            icon: Icon(LevelUpIcons.community),
+            child: Text(
+              'Сообщество',
               style: TextStyle(
                 fontSize: 14,
               ),
             ),
           ),
           Tab(
-            icon: Image(
-              width: 20,
-              height: 20,
-              image: Svg(
-                'assets/icons/user.svg',
-              ),
-            ),
-            child: const Text(
-              'Profile',
+            icon: Icon(LevelUpIcons.user),
+            child: Text(
+              'Профиль',
               style: TextStyle(
                 fontSize: 14,
               ),
@@ -92,9 +75,9 @@ class _NavigatorWidgetState extends State<NavigatorWidget>
           ),
         ],
       ),
-      body: GFTabBarView(controller: tabController, children: <Widget>[
-        HomeScreen(),
+      body: GFTabBarView(controller: tabController, children: const <Widget>[
         RoadMap(),
+        CommunityScreen(),
         ProfileScreen(),
       ]),
     );

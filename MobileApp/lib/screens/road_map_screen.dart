@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:getwidget/colors/gf_color.dart';
 import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
+import 'package:syber_garden/screens/bording_screen.dart';
 import '../data/circle_courses.dart';
 import '../utils/circle.dart';
 
@@ -26,7 +28,7 @@ class _RoadMapState extends State<RoadMap> {
           Padding(
             padding: const EdgeInsets.only(top: 70),
             child: ListView(
-              physics: BouncingScrollPhysics(
+              physics: const BouncingScrollPhysics(
                   parent: AlwaysScrollableScrollPhysics()),
               children: [
                 Column(
@@ -34,12 +36,12 @@ class _RoadMapState extends State<RoadMap> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image(
+                        const Image(
                           image: AssetImage("assets/img/banner.png"),
                         ),
                         Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0xff212338),
+                          decoration: const BoxDecoration(
+                            color: Color(0xff212338),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -63,17 +65,23 @@ class _RoadMapState extends State<RoadMap> {
           Positioned(
             top: 15,
             child: Container(
-              color: Color(0xff36395f),
+              color: const Color(0xff36395f),
               margin: const EdgeInsets.only(top: 10, right: 10),
               width: MediaQuery.of(context).size.width,
               height: 70,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
+                  GestureDetector(
+                    onTap: () {
+                      Route route = CupertinoPageRoute(
+                          builder: (context) => const BordingScreen());
+                      Navigator.push(context, route);
+                    },
+                    child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
-                        children: [
+                        children: const [
                           Image(
                             width: 20,
                             height: 20,
@@ -92,12 +100,14 @@ class _RoadMapState extends State<RoadMap> {
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
-                      )),
+                      ),
+                    ),
+                  ),
                   Expanded(child: Container()),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Padding(
@@ -108,7 +118,7 @@ class _RoadMapState extends State<RoadMap> {
                             percentage: e.progress,
                             lineHeight: 10,
                             alignment: MainAxisAlignment.spaceBetween,
-                            leading: Image(
+                            leading: const Image(
                               width: 20,
                               height: 20,
                               color: Colors.grey,
@@ -116,7 +126,7 @@ class _RoadMapState extends State<RoadMap> {
                                 'assets/icons/crown.svg',
                               ),
                             ),
-                            trailing: Image(
+                            trailing: const Image(
                               width: 20,
                               height: 20,
                               color: Color(0xffffd531),
@@ -132,12 +142,12 @@ class _RoadMapState extends State<RoadMap> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 200,
                             child: Center(
                                 child: Text(
                               '${e.progress * 100.floor()}%',
-                              style: TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.white),
                             )),
                           ),
                         ],

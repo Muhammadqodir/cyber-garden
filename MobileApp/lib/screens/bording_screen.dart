@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:syber_garden/data/small_courses.dart';
 import 'package:syber_garden/widgets/navigation_screens.dart';
 
@@ -46,7 +45,7 @@ class _BordingScreenState extends State<BordingScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 decoration: const InputDecoration(
                   filled: true,
                   fillColor: Color(0xff373960),
@@ -87,13 +86,13 @@ class _BordingScreenState extends State<BordingScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: CupertinoButton(
-                color: Color(0xff388461),
+                color: const Color(0xff388461),
                 onPressed: () {
                   Route route = CupertinoPageRoute(
-                      builder: (context) => NavigatorWidget());
-                  Navigator.push(context, route);
+                      builder: (context) => const NavigatorWidget());
+                  Navigator.pushReplacement(context, route);
                 },
-                child: const Text('Enabled'),
+                child: const Text('Начать поиск'),
               ),
             ),
           ],

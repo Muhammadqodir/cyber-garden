@@ -85,6 +85,9 @@ flutter:
       fonts:
         - asset: assets/fonts/Ubuntu.ttf
           style: italic
+    - family: LevelUpIcons
+      fonts:
+        - asset: assets/fonts/LevelUpIcons.ttf
     - family: Monserrat
       fonts:
         - asset: assets/fonts/Monserrat.ttf
