@@ -34,46 +34,48 @@ class _NavigatorWidgetState extends State<NavigatorWidget>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff212338),
-      bottomNavigationBar: GFTabBar(
-        indicatorColor: Colors.transparent,
-        labelColor: const Color(0xff3ebd64),
-        unselectedLabelColor: Colors.white,
-        tabBarHeight: 65,
-        length: 3,
-        controller: tabController,
-        tabBarColor: Color(0xff3d416d),
-        tabs: const [
-          Padding(
-              padding: EdgeInsets.all(0.0),
-              child: Tab(
-                icon: Icon(LevelUpIcons.road),
-                child: Text(
-                  'Learn',
-                  style: TextStyle(
-                    fontSize: 14,
+      backgroundColor: const Color(0xff3d416d),
+      bottomNavigationBar: SafeArea(
+        child: GFTabBar(
+          indicatorColor: Colors.transparent,
+          labelColor: const Color(0xff3ebd64),
+          unselectedLabelColor: Colors.white,
+          tabBarHeight: 65,
+          length: 3,
+          controller: tabController,
+          tabBarColor: Color(0xff3d416d),
+          tabs: const [
+            Padding(
+                padding: EdgeInsets.all(0.0),
+                child: Tab(
+                  icon: Icon(LevelUpIcons.road),
+                  child: Text(
+                    'Путь',
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
                   ),
+                )),
+            Tab(
+              icon: Icon(LevelUpIcons.community),
+              child: Text(
+                'Сообщество',
+                style: TextStyle(
+                  fontSize: 14,
                 ),
-              )),
-          Tab(
-            icon: Icon(LevelUpIcons.community),
-            child: Text(
-              'Сообщество',
-              style: TextStyle(
-                fontSize: 14,
               ),
             ),
-          ),
-          Tab(
-            icon: Icon(LevelUpIcons.user),
-            child: Text(
-              'Профиль',
-              style: TextStyle(
-                fontSize: 14,
+            Tab(
+              icon: Icon(LevelUpIcons.user),
+              child: Text(
+                'Профиль',
+                style: TextStyle(
+                  fontSize: 14,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       body: GFTabBarView(controller: tabController, children: const <Widget>[
         RoadMap(),

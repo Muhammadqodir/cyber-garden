@@ -17,52 +17,65 @@ class _BordingScreenState extends State<BordingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff212338),
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              margin: const EdgeInsets.only(
-                  top: 150, left: 15, right: 15, bottom: 25),
-              width: 150,
-              height: 150,
-              color: Colors.amber,
-            ),
             const SizedBox(
-              height: 80,
+              height: 100,
+            ),
+            Image.asset(
+              "assets/img/logo.png",
+              height: 150,
+              width: 150,
             ),
             const Text(
-              'Выберите направление',
+              'Рекомендательная система развития\nкомпетенций',
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 12,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 48,
+            ),
+            const Text(
+              'Ваша специальность?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 style: const TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
                 decoration: const InputDecoration(
                   filled: true,
+                  contentPadding: EdgeInsets.all(0),
                   fillColor: Color(0xff373960),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
                     borderSide: BorderSide(width: 2, color: Colors.green),
                   ),
                   disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
                     borderSide: BorderSide(width: 2, color: Color(0xff388461)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.all(Radius.circular(16)),
                     borderSide: BorderSide(width: 2, color: Color(0xff388461)),
                   ),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
                       borderSide: BorderSide(
                         width: 1,
                       )),
@@ -73,7 +86,7 @@ class _BordingScreenState extends State<BordingScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       borderSide:
                           BorderSide(width: 2, color: Colors.yellowAccent)),
-                  hintText: "Поиск профессии",
+                  hintText: "Введите специальность",
                   hintStyle: TextStyle(fontSize: 16, color: Color(0xff737698)),
                 ),
                 controller: controller,
@@ -81,18 +94,19 @@ class _BordingScreenState extends State<BordingScreen> {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 12,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: CupertinoButton(
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 color: const Color(0xff388461),
                 onPressed: () {
                   Route route = CupertinoPageRoute(
                       builder: (context) => const NavigatorWidget());
                   Navigator.pushReplacement(context, route);
                 },
-                child: const Text('Начать поиск'),
+                child: const Text('Начать', style: TextStyle(fontFamily: "Monserrat"),),
               ),
             ),
           ],

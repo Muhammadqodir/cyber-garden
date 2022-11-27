@@ -16,18 +16,18 @@ class CommunityScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: const Text('Сообщество'),
         centerTitle: true,
-        actions: const [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Icon(CupertinoIcons.settings),
-          ),
-        ],
+        // actions: const [
+        //   Padding(
+        //     padding: const EdgeInsets.only(right: 15),
+        //     child: Icon(CupertinoIcons.settings),
+        //   ),
+        // ],
       ),
       body: const Center(
         child: Text(
-          'В разработке',
+          'В разработке...',
           style: TextStyle(
-            fontSize: 25,
+            fontSize: 16,
             color: Colors.white,
           ),
         ),

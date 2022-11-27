@@ -77,12 +77,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         automaticallyImplyLeading: false,
         title: const Text('Профиль'),
         centerTitle: true,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 15),
-            child: Icon(CupertinoIcons.settings),
-          ),
-        ],
+        // actions: const [
+        //   Padding(
+        //     padding: EdgeInsets.only(right: 15),
+        //     child: Icon(CupertinoIcons.settings),
+        //   ),
+        // ],
       ),
       backgroundColor: const Color(0xff212338),
       body: ListView(
@@ -193,10 +193,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: const Color.fromARGB(255, 16, 197, 70),
                         onPressed: () {},
                         child: const Text(
-                          'ПОДЕЛИТЬСЯ МОИМ ПРОГРЕССОМ',
+                          'Поделиться моим прогрессом',
                           style: TextStyle(
+                              fontFamily: 'Monserrat',
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Ubuntu',
                               fontSize: 15),
                         ),
                       ),
@@ -206,7 +206,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(
                   children: const [
                     Text(
-                      'Сертификаты',
+                      'Ваши компетенции',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -368,14 +368,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   width: w,
                   height: h * 0.07,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
                         onTap: () {},
                         child: const Text(
-                          'Sign Out',
+                          'Выход',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 18,
-                              color: Color.fromARGB(211, 229, 16, 16),
+                              color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
