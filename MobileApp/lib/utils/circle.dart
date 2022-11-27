@@ -100,7 +100,11 @@ class _CircleState extends State<Circle> {
                 child: CupertinoButton(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   color: Color(0xFFFFC008),
-                  onPressed: () {},
+                  onPressed: () {
+                    Route route = CupertinoPageRoute(
+                        builder: (context) => CourseDetails(title: widget.title,));
+                    Navigator.push(context, route);
+                  },
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -135,11 +139,6 @@ class _CircleState extends State<Circle> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   color: const Color(0xff28A745),
                   onPressed: () {
-                    // Route route = CupertinoPageRoute(
-                    //     builder: (context) => CourseDetails(
-                    //         book:
-                    //             '${Circle(title: widget.title).title}'));
-                    // Navigator.push(context, route);
                   },
                   child: Row(
                     children: const [
