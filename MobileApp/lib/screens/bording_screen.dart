@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/search_bar/gf_search_bar.dart';
 import 'package:syber_garden/data/small_courses.dart';
-import 'package:syber_garden/screens/road_map_screen.dart';
 import 'package:syber_garden/widgets/navigation_screens.dart';
 
 class BordingScreen extends StatefulWidget {
@@ -30,6 +28,9 @@ class _BordingScreenState extends State<BordingScreen> {
               height: 150,
               color: Colors.amber,
             ),
+            const SizedBox(
+              height: 80,
+            ),
             const Text(
               'Выберите направление',
               style: TextStyle(
@@ -38,73 +39,62 @@ class _BordingScreenState extends State<BordingScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            TextField(
-              style: TextStyle(color: Colors.white),
-              decoration: const InputDecoration(
-                filled: true,
-                fillColor: Color(0xff373960),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(width: 2, color: Colors.green),
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(width: 2, color: Color(0xff388461)),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(width: 2, color: Color(0xff388461)),
-                ),
-                border: OutlineInputBorder(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: TextField(
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
+                  filled: true,
+                  fillColor: Color(0xff373960),
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(
-                      width: 1,
-                    )),
-                errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(width: 2, color: Colors.white)),
-                focusedErrorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide:
-                        BorderSide(width: 2, color: Colors.yellowAccent)),
-                hintText: "Поиск профессии",
-                hintStyle: TextStyle(fontSize: 16, color: Color(0xff737698)),
-              ),
-              controller: controller,
-              obscureText: false,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                Route route =
-                    MaterialPageRoute(builder: (context) => NavigatorWidget());
-                Navigator.push(context, route);
-              },
-              child: Container(
-                width: 100,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Color(0xff3d416d),
-                  borderRadius: BorderRadius.circular(
-                    10,
+                    borderSide: BorderSide(width: 2, color: Colors.green),
                   ),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Начать',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(width: 2, color: Color(0xff388461)),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(width: 2, color: Color(0xff388461)),
+                  ),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide(
+                        width: 1,
+                      )),
+                  errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide(width: 2, color: Colors.white)),
+                  focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide:
+                          BorderSide(width: 2, color: Colors.yellowAccent)),
+                  hintText: "Поиск профессии",
+                  hintStyle: TextStyle(fontSize: 16, color: Color(0xff737698)),
                 ),
+                controller: controller,
+                obscureText: false,
               ),
-            )
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: CupertinoButton(
+                color: const Color(0xff388461),
+                onPressed: () {
+                  Route route = CupertinoPageRoute(
+                      builder: (context) => const NavigatorWidget());
+                  Navigator.pushReplacement(context, route);
+                },
+                child: const Text('Начать поиск'),
+              ),
+            ),
           ],
         ),
       ),

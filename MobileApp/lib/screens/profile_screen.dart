@@ -1,7 +1,10 @@
 import 'dart:io';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:getwidget/components/progress_bar/gf_progress_bar.dart';
+import 'package:getwidget/types/gf_progress_type.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import '../utils/select_img.dart';
@@ -68,9 +71,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Color(0xff3d416d),
+        automaticallyImplyLeading: false,
+        title: const Text('Профиль'),
+        centerTitle: true,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 15),
+            child: Icon(CupertinoIcons.settings),
+          ),
+        ],
+      ),
       backgroundColor: const Color(0xff212338),
       body: ListView(
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.only(top: 10),
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
@@ -81,7 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 SizedBox(
                   width: w,
-                  height: h * 0.35,
+                  height: h * 0.25,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,20 +114,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: 90,
                               height: 90,
                               decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
+                                color: const Color.fromARGB(166, 238, 238, 238),
                                 borderRadius: BorderRadius.circular(50),
                               ),
                               child: Center(
                                 child: _image == null
-                                    ? Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                            image: const DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/img/avatar.jpg'),
-                                                fit: BoxFit.cover)),
-                                      )
+                                    ? const Image(
+                                        width: 50,
+                                        height: 50,
+                                        image: NetworkImage(
+                                            'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'),
+                                        fit: BoxFit.cover)
                                     : CircleAvatar(
                                         backgroundImage: FileImage(_image!),
                                         radius: 200.0,
@@ -119,198 +132,233 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                'Joined',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              Text(
-                                '2 month ago',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          )
                         ],
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'DADAXON',
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: const [
+                              Text(
+                                'DADAXON',
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Turgunboev',
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                              SizedBox(
+                                height: 5,
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: w,
-                  height: h * 0.09,
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Edit Profile',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Color.fromARGB(213, 255, 255, 255)),
-                      ),
-                      Expanded(child: Container()),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 19,
-                          color: Color.fromARGB(213, 255, 255, 255),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: w,
-                  height: h * 0.09,
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Privacy Policy',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Color.fromARGB(213, 255, 255, 255)),
-                      ),
-                      Expanded(child: Container()),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 19,
-                          color: Color.fromARGB(213, 255, 255, 255),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: w,
-                  height: h * 0.09,
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Settings',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Color.fromARGB(213, 255, 255, 255)),
-                      ),
-                      Expanded(child: Container()),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 19,
-                          color: Color.fromARGB(213, 255, 255, 255),
-                        ),
+                              Text(
+                                'Turgunboev',
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'Бухгалтерия',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 15,
                 ),
-                InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(15),
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    width: w,
-                    height: h * 0.11,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(32, 158, 158, 158),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 37,
-                          padding: const EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 211, 28, 15),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: const Center(
-                            child: Text(
-                              'PRO',
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                SizedBox(
+                  width: w,
+                  height: h * 0.09,
+                  child: Column(
+                    children: [
+                      CupertinoButton(
+                        borderRadius: BorderRadius.circular(20),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        color: const Color.fromARGB(255, 16, 197, 70),
+                        onPressed: () {},
+                        child: const Text(
+                          'ПОДЕЛИТЬСЯ МОИМ ПРОГРЕССОМ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Ubuntu',
+                              fontSize: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'Сертификаты',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  width: MediaQuery.of(context).size.width,
+                  height: 230,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xff3d416d),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Image(
+                            width: 45,
+                            height: 45,
+                            color: Color(0xffffd531),
+                            image: Svg(
+                              'assets/icons/crown.svg',
                             ),
                           ),
-                        ),
-                        Expanded(child: Container()),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'Upgrade to Premium',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color:
-                                          Color.fromARGB(255, 255, 255, 255)),
-                                ),
-                                Text(
-                                  'This subscription is auto-renewable',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      color:
-                                          Color.fromARGB(167, 255, 255, 255)),
-                                ),
-                              ],
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const Text(
+                            'Веб-Разработка',
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
-                            Expanded(child: Container()),
-                            const Icon(
-                              Icons.arrow_forward_ios,
-                              size: 19,
-                              color: Color.fromARGB(213, 255, 255, 255),
+                          ),
+                          Expanded(child: Container()),
+                          SizedBox(
+                            width: 45,
+                            height: 45,
+                            child: GFProgressBar(
+                              percentage: 0.9,
+                              radius: 50,
+                              type: GFProgressType.circular,
+                              child: Text(
+                                '80%',
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 10, color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black26,
+                              progressBarColor:
+                                  const Color.fromARGB(255, 16, 197, 70),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Image(
+                            width: 45,
+                            height: 45,
+                            color: Color(0xffffd531),
+                            image: Svg(
+                              'assets/icons/crown.svg',
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const Text(
+                            'Python',
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Expanded(child: Container()),
+                          SizedBox(
+                            width: 45,
+                            height: 45,
+                            child: GFProgressBar(
+                              percentage: 0.5,
+                              radius: 50,
+                              type: GFProgressType.circular,
+                              child: Text(
+                                '80%',
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 10, color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black26,
+                              progressBarColor:
+                                  Color.fromARGB(255, 16, 197, 70),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Image(
+                            width: 45,
+                            height: 45,
+                            color: Color(0xffffd531),
+                            image: Svg(
+                              'assets/icons/crown.svg',
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const Text(
+                            'SQL',
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Expanded(child: Container()),
+                          SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: GFProgressBar(
+                              percentage: 0.3,
+                              radius: 50,
+                              type: GFProgressType.circular,
+                              child: const Text(
+                                '80%',
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 10, color: Colors.white),
+                              ),
+                              backgroundColor: Colors.black26,
+                              progressBarColor:
+                                  Color.fromARGB(255, 16, 197, 70),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(

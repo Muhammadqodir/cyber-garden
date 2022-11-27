@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:syber_garden/screens/auth_screen.dart';
 import 'package:syber_garden/screens/bording_screen.dart';
 
 void main() {
@@ -12,10 +11,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Monserrat',
+      ),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: Scaffold(
+      home: const Scaffold(
         body: BordingScreen(),
       ),
     );

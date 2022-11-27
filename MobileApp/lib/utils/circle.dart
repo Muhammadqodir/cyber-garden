@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/size/gf_size.dart';
+import 'package:syber_garden/level_up_icons_icons.dart';
 import 'package:syber_garden/screens/course_details_screen.dart';
 
 import '../data/card_courses.dart';
@@ -44,7 +46,7 @@ class _CircleState extends State<Circle> {
               child: Image(
                 color: widget.activity == 'false'
                     ? Color(0xff43444e)
-                    : Color.fromARGB(255, 161, 163, 179),
+                    : Color.fromARGB(255, 82, 88, 150),
                 image: widget.activity == 'false'
                     ? Svg(
                         'assets/icons/lock.svg',
@@ -52,58 +54,130 @@ class _CircleState extends State<Circle> {
                     : Svg(
                         'assets/icons/star.svg',
                       ),
-                width: 30,
-                height: 30,
+                width: 40,
+                height: 40,
               ),
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GFButton(
-                color: Color(0xff4b4f7f),
-                onPressed: () {},
-                text: "дальше",
-                size: GFSize.SMALL,
-                textStyle: TextStyle(color: Colors.white, fontSize: 12),
-                icon: Icon(
-                  Icons.leak_add_rounded,
-                  size: 12,
-                ),
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              GFButton(
-                color: Color(0xff4b4f7f),
-                onPressed: () {},
-                text: "изучать",
-                size: GFSize.SMALL,
-                textStyle: TextStyle(color: Colors.white, fontSize: 12),
-                icon: Icon(
-                  Icons.done,
-                  color: Colors.white,
-                  size: 12,
-                ),
-              ),
-            ],
-          ),
-          Icon(
-            Icons.more_vert,
-            size: 50,
-            color: const Color(0xff4b4f7f),
-          ),
           Padding(
-            padding: EdgeInsets.only(top: 10),
+            padding: EdgeInsets.only(top: 20),
             child: Text(
               '${Circle(title: widget.title).title}',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Ubuntu',
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          widget.activity == 'true'
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 30,
+                      child: CupertinoButton(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        color: Color.fromARGB(144, 255, 214, 49),
+                        onPressed: () {},
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              LevelUpIcons.icons8_graduation_cap,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              'дальше',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontFamily: "Monserrat"),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    SizedBox(
+                      height: 30,
+                      child: CupertinoButton(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        color: const Color(0xff388461),
+                        onPressed: () {
+                          Route route = CupertinoPageRoute(
+                              builder: (context) => CourseDetails(
+                                  book:
+                                      '${Circle(title: widget.title).title}'));
+                          Navigator.push(context, route);
+                        },
+                        child: Row(
+                          children: const [
+                            Icon(
+                              LevelUpIcons.icons8_done,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              'изучать',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontFamily: 'Monserrat',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              : const SizedBox(),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color(0xff4b4f7f),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color(0xff4b4f7f),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color(0xff4b4f7f),
             ),
           ),
           const SizedBox(
